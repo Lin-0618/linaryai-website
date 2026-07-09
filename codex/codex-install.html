@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LinaryAI 令牌配置 CC Switch 教程</title>
-  <meta name="description" content="使用 LinaryAI 网站令牌一键导入 CC Switch，并配置 Codex 使用 LinaryAI API 的图文教程。">
+  <title>Codex 官方安装下载 - LinaryAI</title>
+  <meta name="description" content="Codex 官方安装下载入口，包含 Windows、macOS Apple Silicon 和 macOS Intel 三个官方直连下载链接。">
   <link rel="shortcut icon" href="/codex/favicon.ico?v=20260709">
   <link rel="icon" href="/codex/assets/favicon.ico?v=20260709" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/codex/assets/favicon-32.png?v=20260709">
@@ -35,6 +35,15 @@
       letter-spacing: 0;
     }
     a { color: inherit; text-decoration: none; }
+    code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(49, 95, 214, 0.08);
+      color: #24479e;
+      font-family: Consolas, "SFMono-Regular", monospace;
+      font-size: 0.92em;
+      word-break: break-word;
+    }
 
     .nav {
       position: sticky;
@@ -83,7 +92,7 @@
     .hero {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 500px);
       gap: 56px;
       align-items: center;
       min-height: 560px;
@@ -126,7 +135,7 @@
       letter-spacing: 0;
     }
     .hero-copy {
-      max-width: 680px;
+      max-width: 700px;
       margin: 24px 0 0;
       color: var(--muted);
       font-size: 19px;
@@ -159,6 +168,11 @@
       border-color: var(--green);
       box-shadow: 0 14px 30px rgba(20, 184, 111, 0.26);
     }
+    .btn.dark {
+      color: #fff;
+      background: var(--dark);
+      border-color: var(--dark);
+    }
     .btn:hover {
       transform: translateY(-1px);
       border-color: rgba(16, 19, 22, 0.2);
@@ -170,50 +184,49 @@
       box-shadow: 0 18px 38px rgba(20, 184, 111, 0.32);
     }
 
-    .summary-panel {
+    .source-panel {
       background: #fff;
       border: 1px solid rgba(16, 19, 22, 0.1);
       border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-    .summary-head {
+    .source-head {
       padding: 26px 28px;
       background: linear-gradient(180deg, #ffffff 0%, #f3f8f2 100%);
       border-bottom: 1px solid rgba(16, 19, 22, 0.08);
     }
-    .summary-head img {
+    .source-head img {
       width: 260px;
       max-width: 100%;
       height: auto;
       display: block;
       margin-bottom: 20px;
     }
-    .summary-head strong {
+    .source-head strong {
       display: block;
       font-size: 20px;
       margin-bottom: 8px;
     }
-    .summary-head p {
+    .source-head p {
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
     }
-    .summary-list {
+    .source-list {
       padding: 22px 28px 26px;
       margin: 0;
       list-style: none;
       display: grid;
       gap: 14px;
     }
-    .summary-list li {
+    .source-list li {
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      color: var(--ink);
       line-height: 1.7;
     }
-    .summary-list li::before {
+    .source-list li::before {
       content: "";
       width: 10px;
       height: 10px;
@@ -222,6 +235,10 @@
       background: var(--green);
       box-shadow: 0 0 0 7px rgba(20, 184, 111, 0.12);
       flex: 0 0 auto;
+    }
+    .source-list a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     section {
@@ -250,68 +267,98 @@
       letter-spacing: 0;
     }
     .section-lead {
-      max-width: 760px;
+      max-width: 780px;
       margin: 14px 0 0;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.8;
     }
 
-    .guide-grid {
+    .download-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
     }
-    .guide-card {
+    .download-card {
+      position: relative;
+      display: flex;
+      min-height: 390px;
+      flex-direction: column;
+      padding: 28px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 8px;
-      overflow: hidden;
       box-shadow: 0 14px 34px rgba(16, 19, 22, 0.06);
+      overflow: hidden;
     }
-    .guide-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1120 / 700;
-      object-fit: contain;
-      background: #eef2ef;
-      border-bottom: 1px solid rgba(8, 11, 13, 0.08);
+    .download-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: var(--green);
     }
-    .guide-copy {
-      padding: 22px 24px 24px;
-    }
-    .step-num {
+    .platform {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 34px;
-      height: 34px;
-      padding: 0 10px;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 20px;
       border-radius: 8px;
       color: #fff;
       background: var(--dark);
       font-weight: 800;
-      font-size: 14px;
-      margin-bottom: 14px;
+      font-size: 18px;
     }
-    .guide-copy h3 {
+    .download-card h3 {
       margin: 0;
-      font-size: 22px;
-      line-height: 1.35;
+      font-size: 24px;
+      line-height: 1.3;
     }
-    .guide-copy p {
-      margin: 10px 0 0;
+    .download-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .download-meta {
+      display: grid;
+      gap: 8px;
+      margin: 20px 0 24px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .download-meta span {
+      padding: 8px 10px;
+      border: 1px solid rgba(16, 19, 22, 0.08);
+      border-radius: 8px;
+      background: #f8faf7;
+    }
+    .download-card .btn {
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .next {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .next-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .next-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .next-card p {
+      margin: 0;
       color: var(--muted);
       line-height: 1.8;
-    }
-    code {
-      padding: 2px 6px;
-      border-radius: 6px;
-      background: rgba(49, 95, 214, 0.08);
-      color: #24479e;
-      font-family: Consolas, "SFMono-Regular", monospace;
-      font-size: 0.92em;
-      word-break: break-word;
     }
 
     .note {
@@ -335,27 +382,6 @@
       color: rgba(255,255,255,0.74);
       line-height: 1.8;
     }
-
-    .faq {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .faq-item {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-    .faq-item h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-    .faq-item p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-    }
     footer {
       display: flex;
       align-items: center;
@@ -371,6 +397,10 @@
       .btn { transition: none; }
       .btn:hover { transform: none; }
     }
+    @media (max-width: 1050px) {
+      .download-grid, .next { grid-template-columns: 1fr; }
+      .download-card { min-height: 0; }
+    }
     @media (max-width: 900px) {
       .nav, .hero, section, footer { padding-left: 24px; padding-right: 24px; }
       .nav-links { display: none; }
@@ -378,7 +408,6 @@
       h1 { font-size: 44px; }
       .hero-copy { font-size: 17px; }
       .section-heading, .note, footer { align-items: flex-start; flex-direction: column; }
-      .guide-grid, .faq { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .nav { padding-top: 12px; padding-bottom: 12px; }
@@ -388,22 +417,7 @@
       .section-title { font-size: 34px; }
       .actions { width: 100%; }
       .btn { width: 100%; }
-      .summary-head, .summary-list, .guide-copy, .faq-item { padding-left: 20px; padding-right: 20px; }
-      .summary-list li {
-        display: block;
-        position: relative;
-        padding-left: 24px;
-      }
-      .summary-list li::before {
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-      .summary-list code {
-        display: inline-block;
-        max-width: 100%;
-        margin-top: 6px;
-      }
+      .source-head, .source-list, .download-card, .next-card { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
@@ -415,130 +429,128 @@
     </a>
     <div class="nav-links">
       <a href="/codex/">安装助手</a>
-      <a href="codex-install.html">Codex 官方安装</a>
-      <a href="ccswitch.html" aria-current="page">CC Switch 教程</a>
+      <a href="codex-install.html" aria-current="page">Codex 官方安装</a>
+      <a href="ccswitch.html">CC Switch 教程</a>
       <a href="https://api.linaryai.top/keys">令牌管理</a>
-      <a href="#faq">常见问题</a>
     </div>
   </nav>
 
   <main>
     <section class="hero">
       <div>
-        <div class="eyebrow">LinaryAI Token + CC Switch</div>
-        <h1>用 LinaryAI 令牌配置 CC Switch</h1>
-        <p class="hero-copy">登录 LinaryAI 控制台后，在令牌管理里点击 CC Switch，确认导入供应商配置。完成后，Codex 会通过 <code>https://api.linaryai.top/v1</code> 使用你的 LinaryAI 令牌。</p>
+        <div class="eyebrow">Official Codex App Download</div>
+        <h1>Codex 官方安装下载</h1>
+        <p class="hero-copy">这里放的是 OpenAI 官方 Codex App 下载入口，不是 LinaryAI 配置助手。先按系统下载安装到电脑上，再用 LinaryAI 安装助手或 CC Switch 写入 LinaryAI 令牌配置。</p>
         <div class="actions">
-          <a class="btn primary" href="https://api.linaryai.top/keys">打开令牌管理</a>
-          <a class="btn" href="#steps">查看图文步骤</a>
-          <a class="btn" href="codex-install.html">Codex 官方安装</a>
-          <a class="btn" href="/codex/">返回安装助手</a>
+          <a class="btn primary" href="#downloads">选择系统下载</a>
+          <a class="btn" href="ccswitch.html">配置 CC Switch</a>
+          <a class="btn" href="/codex/">返回 LinaryAI 安装助手</a>
         </div>
       </div>
 
-      <aside class="summary-panel" aria-label="配置结果">
-        <div class="summary-head">
+      <aside class="source-panel" aria-label="官方来源">
+        <div class="source-head">
           <img src="assets/linary-lockup.png" alt="LinaryAI">
-          <strong>配置完成后应该看到什么</strong>
-          <p>在 CC Switch 的 Codex 标签下出现 My Codex，并显示官方网址为 LinaryAI。</p>
+          <strong>下载链接来源</strong>
+          <p>下载入口来自 OpenAI 官方 Codex app 文档。页面会按系统分成 Windows、Mac M 系列和 Mac Intel。</p>
         </div>
-        <ul class="summary-list">
-          <li>官网地址：<code>https://api.linaryai.top</code></li>
-          <li>API 端点：<code>https://api.linaryai.top/v1</code></li>
-          <li>模型选择：推荐保持默认的 <code>gpt-5.5</code></li>
-          <li>看到 My Codex 后，直接打开 Codex 使用即可</li>
+        <ul class="source-list">
+          <li>Windows 官方链接来自 <code>get.microsoft.com</code></li>
+          <li>macOS 官方链接来自 <code>persistent.oaistatic.com</code></li>
+          <li>OpenAI 官方文档：<a href="https://developers.openai.com/codex/app" target="_blank" rel="noreferrer">developers.openai.com/codex/app</a></li>
         </ul>
       </aside>
     </section>
 
-    <section id="steps">
+    <section id="downloads">
       <div class="section-heading">
         <div>
-          <p class="kicker">图文步骤</p>
-          <h2 class="section-title">从令牌管理导入 CC Switch</h2>
-          <p class="section-lead">下面的流程适合已经安装 CC Switch 的用户。整个过程中不需要把 API Key 粘贴到网页，只需要在 LinaryAI 控制台里点击对应按钮。</p>
+          <p class="kicker">官方直连下载</p>
+          <h2 class="section-title">选择你的系统</h2>
+          <p class="section-lead">Mac 用户如果不确定芯片类型，点左上角 Apple 标志，进入「关于本机」查看。显示 M1/M2/M3/M4 就选 Apple Silicon；显示 Intel 就选 Intel 版。</p>
         </div>
-        <a class="btn primary" href="https://api.linaryai.top/keys">打开 LinaryAI 令牌管理</a>
       </div>
 
-      <div class="guide-grid">
-        <article class="guide-card">
-          <img src="assets/ccswitch-01-token-list.jpg" alt="在 LinaryAI 令牌管理页面点击 CC Switch">
-          <div class="guide-copy">
-            <span class="step-num">01</span>
-            <h3>进入令牌管理，点击 CC Switch</h3>
-            <p>登录 <code>api.linaryai.top</code> 后进入控制台，打开左侧的「令牌管理」。在要使用的令牌行右侧点击「CC Switch」。</p>
+      <div class="download-grid">
+        <article class="download-card">
+          <span class="platform">Win</span>
+          <h3>Windows 版 Codex</h3>
+          <p>适合 Windows 10/11 用户。下载后按系统提示安装 Codex App。</p>
+          <div class="download-meta">
+            <span>系统：Windows</span>
+            <span>来源：OpenAI 官方 Windows 下载入口</span>
+            <span>后续：安装完成后再配置 LinaryAI 令牌</span>
           </div>
+          <a class="btn primary" href="https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi">下载 Windows 版</a>
         </article>
 
-        <article class="guide-card">
-          <img src="assets/ccswitch-02-open-dialog.jpg" alt="填写 CC Switch 的 Codex 配置">
-          <div class="guide-copy">
-            <span class="step-num">02</span>
-            <h3>保持 Codex 应用并打开 CC Switch</h3>
-            <p>弹窗里应用选择「Codex」，名称可以保持 My Codex，主模型建议选择 <code>gpt-5.5</code>，然后点击「打开 CC Switch」。</p>
+        <article class="download-card">
+          <span class="platform">M</span>
+          <h3>macOS Apple Silicon</h3>
+          <p>适合 MacBook、iMac、Mac mini、Mac Studio 等 M 系列芯片设备。</p>
+          <div class="download-meta">
+            <span>芯片：M1 / M2 / M3 / M4</span>
+            <span>来源：OpenAI 官方 DMG</span>
+            <span>后续：打开 DMG，把 Codex 拖入 Applications</span>
           </div>
+          <a class="btn primary" href="https://persistent.oaistatic.com/codex-app-prod/Codex.dmg">下载 Mac M 系列版</a>
         </article>
 
-        <article class="guide-card">
-          <img src="assets/ccswitch-03-confirm-import.png" alt="在 CC Switch 中确认导入供应商配置">
-          <div class="guide-copy">
-            <span class="step-num">03</span>
-            <h3>确认导入供应商配置</h3>
-            <p>CC Switch 会展示即将导入的信息。重点确认官网地址为 <code>https://api.linaryai.top</code>，API 端点为 <code>https://api.linaryai.top/v1</code>，确认后点击「导入」。</p>
+        <article class="download-card">
+          <span class="platform">Intel</span>
+          <h3>macOS Intel 版</h3>
+          <p>适合较早的 Intel 芯片 Mac。不要和 M 系列版本混用。</p>
+          <div class="download-meta">
+            <span>芯片：Intel</span>
+            <span>来源：OpenAI 官方 DMG</span>
+            <span>后续：打开 DMG，把 Codex 拖入 Applications</span>
           </div>
+          <a class="btn primary" href="https://persistent.oaistatic.com/codex-app-prod/Codex-latest-x64.dmg">下载 Mac Intel 版</a>
         </article>
+      </div>
+    </section>
 
-        <article class="guide-card">
-          <img src="assets/ccswitch-04-provider-ready.jpg" alt="CC Switch 里出现 My Codex 配置">
-          <div class="guide-copy">
-            <span class="step-num">04</span>
-            <h3>看到 My Codex 后打开 Codex</h3>
-            <p>导入成功后，在 CC Switch 的 Codex 标签下会出现 My Codex。看到这个配置后，直接打开 Codex 使用即可。</p>
-          </div>
+    <section>
+      <div class="section-heading">
+        <div>
+          <p class="kicker">安装后下一步</p>
+          <h2 class="section-title">把 Codex 接到 LinaryAI</h2>
+          <p class="section-lead">Codex 官方 App 装好之后，还需要把 LinaryAI 的 API 地址和令牌写进去。你可以任选下面一种方式。</p>
+        </div>
+      </div>
+      <div class="next">
+        <article class="next-card">
+          <h3>方式一：LinaryAI 安装助手</h3>
+          <p>回到安装助手页面，下载对应系统的 LinaryAI 配置工具，输入令牌后自动写入配置和插件包。</p>
         </article>
+        <article class="next-card">
+          <h3>方式二：CC Switch</h3>
+          <p>在 LinaryAI 令牌管理里点击 CC Switch，一键导入 Codex 供应商配置。</p>
+        </article>
+        <article class="next-card">
+          <h3>API 地址</h3>
+          <p>确认 Codex 或 CC Switch 中使用的是 <code>https://api.linaryai.top/v1</code>。</p>
+        </article>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="/codex/">打开 LinaryAI 安装助手</a>
+        <a class="btn" href="ccswitch.html">查看 CC Switch 教程</a>
+        <a class="btn" href="https://api.linaryai.top/keys">获取 LinaryAI 令牌</a>
       </div>
     </section>
 
     <section class="note">
       <div>
-        <h2>不要在公开页面输入或发送 API Key</h2>
-        <p>令牌只会在 LinaryAI 控制台和 CC Switch 导入流程里使用。截图、教程、报错日志发给别人前，记得确认密钥已打码。</p>
+        <h2>这里只下载 Codex 本体</h2>
+        <p>这个页面只负责提供官方 Codex App 下载链接。LinaryAI 的 API Key、插件包、中文配置和 CC Switch 导入，请继续使用本站的 LinaryAI 安装助手或 CC Switch 教程。</p>
       </div>
-      <a class="btn primary" href="https://api.linaryai.top/keys">管理我的令牌</a>
-    </section>
-
-    <section id="faq">
-      <div class="section-heading">
-        <div>
-          <p class="kicker">排查</p>
-          <h2 class="section-title">常见问题</h2>
-        </div>
-      </div>
-      <div class="faq">
-        <div class="faq-item">
-          <h3>导入后还是 DeepSeek 或 default 怎么办？</h3>
-          <p>回到 CC Switch 的 Codex 标签，确认当前使用的是 My Codex，且官网地址显示为 <code>https://api.linaryai.top</code>。旧的 DeepSeek/default 配置可以先不要选中。</p>
-        </div>
-        <div class="faq-item">
-          <h3>模型名称应该选哪个？</h3>
-          <p>按教程保持 <code>gpt-5.5</code> 即可。后续如果 LinaryAI 控制台调整可用模型，再回到 CC Switch 编辑这个供应商配置。</p>
-        </div>
-        <div class="faq-item">
-          <h3>CC Switch 没有自动打开？</h3>
-          <p>确认电脑已经安装 CC Switch，并允许浏览器打开外部应用。如果浏览器拦截，重新点击「打开 CC Switch」并选择允许。</p>
-        </div>
-        <div class="faq-item">
-          <h3>配置完成后还需要安装 LinaryAI 安装包吗？</h3>
-          <p>如果 Codex 已经能通过 CC Switch 使用 LinaryAI，就不需要重复配置。若还没有 Codex 或插件包，可以回到安装助手下载对应系统版本。</p>
-        </div>
-      </div>
+      <a class="btn primary" href="/codex/">继续配置 LinaryAI</a>
     </section>
   </main>
 
   <footer>
     <span>© LinaryAI</span>
-    <span>CC Switch 教程不会在网页中收集 API Key</span>
+    <span>Codex 下载链接来自 OpenAI 官方文档</span>
   </footer>
 </body>
 </html>
