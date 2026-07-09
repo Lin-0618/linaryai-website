@@ -435,47 +435,6 @@
 
     .download-links .btn { margin-top: 0; }
 
-    .video-section {
-      color: #fff;
-      background:
-        linear-gradient(180deg, #0f1512 0%, #18211d 100%);
-    }
-
-    .video-section .section-title { color: #fff; }
-
-    .video-section .section-lead,
-    .video-section .video-caption {
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .video-section .kicker { color: #8ce6b8; }
-
-    .demo-video-wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-    }
-
-    .demo-video {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #0b1110;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 8px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-    }
-
-    .video-caption {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
     .tutorial-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -655,7 +614,6 @@
     </a>
     <div class="nav-links">
       <a href="#download">下载</a>
-      <a href="#video">视频教程</a>
       <a href="#windows">Windows 教程</a>
       <a href="#macos">macOS 教程</a>
       <a href="codex-install.html">Codex 官方安装</a>
@@ -735,24 +693,6 @@
             <a class="btn" href="#macos">查看图文教程</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="video" class="video-section">
-      <div class="section-heading">
-        <div>
-          <p class="kicker">快速视频教程</p>
-          <h2 class="section-title">23 秒看完整安装流程</h2>
-          <p class="section-lead">本地生成的短片演示会从下载、检测 Codex、输入 API Key、自动配置一路走到验证通过。视频不包含真实 API Key。</p>
-        </div>
-      </div>
-      <div class="demo-video-wrap">
-        <video class="demo-video" controls preload="metadata" poster="assets/linaryai-codex-install-demo-poster.png">
-          <source src="assets/linaryai-codex-install-demo.webm" type="video/webm">
-          <source src="assets/linaryai-codex-install-demo.mp4" type="video/mp4">
-          当前浏览器不支持视频播放，请查看下方图文教程。
-        </video>
-        <p class="video-caption">视频为本地生成的安装流程动画，用于快速说明操作顺序；如果从压缩包打开网页，请先完整解压整个文件夹，避免视频资源加载失败。</p>
       </div>
     </section>
 

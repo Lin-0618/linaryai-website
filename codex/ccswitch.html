@@ -257,6 +257,72 @@
       line-height: 1.8;
     }
 
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .download-card {
+      position: relative;
+      display: flex;
+      min-height: 350px;
+      flex-direction: column;
+      padding: 24px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 14px 34px rgba(16, 19, 22, 0.06);
+      overflow: hidden;
+    }
+    .download-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: var(--green);
+    }
+    .platform {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--dark);
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .download-card h3 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+    .download-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .download-meta {
+      display: grid;
+      gap: 8px;
+      margin: 18px 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .download-meta span {
+      padding: 8px 10px;
+      border: 1px solid rgba(16, 19, 22, 0.08);
+      border-radius: 8px;
+      background: #f8faf7;
+    }
+    .download-card .btn {
+      width: 100%;
+      margin-top: auto;
+    }
+
     .guide-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -371,6 +437,9 @@
       .btn { transition: none; }
       .btn:hover { transform: none; }
     }
+    @media (max-width: 1200px) {
+      .download-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 900px) {
       .nav, .hero, section, footer { padding-left: 24px; padding-right: 24px; }
       .nav-links { display: none; }
@@ -378,7 +447,7 @@
       h1 { font-size: 44px; }
       .hero-copy { font-size: 17px; }
       .section-heading, .note, footer { align-items: flex-start; flex-direction: column; }
-      .guide-grid, .faq { grid-template-columns: 1fr; }
+      .download-grid, .guide-grid, .faq { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .nav { padding-top: 12px; padding-bottom: 12px; }
@@ -416,6 +485,7 @@
     <div class="nav-links">
       <a href="/codex/">安装助手</a>
       <a href="codex-install.html">Codex 官方安装</a>
+      <a href="#ccswitch-downloads">CC Switch 下载</a>
       <a href="ccswitch.html" aria-current="page">CC Switch 教程</a>
       <a href="https://api.linaryai.top/keys">令牌管理</a>
       <a href="#faq">常见问题</a>
@@ -430,6 +500,7 @@
         <p class="hero-copy">登录 LinaryAI 控制台后，在令牌管理里点击 CC Switch，确认导入供应商配置。完成后，Codex 会通过 <code>https://api.linaryai.top/v1</code> 使用你的 LinaryAI 令牌。</p>
         <div class="actions">
           <a class="btn primary" href="https://api.linaryai.top/keys">打开令牌管理</a>
+          <a class="btn" href="#ccswitch-downloads">下载 CC Switch</a>
           <a class="btn" href="#steps">查看图文步骤</a>
           <a class="btn" href="codex-install.html">Codex 官方安装</a>
           <a class="btn" href="/codex/">返回安装助手</a>
@@ -451,12 +522,68 @@
       </aside>
     </section>
 
+    <section id="ccswitch-downloads">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">官方下载</p>
+          <h2 class="section-title">先安装 CC Switch</h2>
+          <p class="section-lead">下载入口来自 CC Switch 官方 GitHub Releases。macOS 当前是一个通用 DMG，Apple Silicon 和 Intel Mac 使用同一个安装包。</p>
+        </div>
+      </div>
+
+      <div class="download-grid">
+        <article class="download-card">
+          <span class="platform">Win</span>
+          <h3>Windows x64</h3>
+          <p>适合大多数 Intel / AMD Windows 10/11 电脑。</p>
+          <div class="download-meta">
+            <span>推荐：MSI 安装包</span>
+            <span>文件：CC-Switch-v3.16.5-Windows.msi</span>
+          </div>
+          <a class="btn primary" href="https://github.com/farion1231/cc-switch/releases/download/v3.16.5/CC-Switch-v3.16.5-Windows.msi">下载 Windows x64</a>
+        </article>
+
+        <article class="download-card">
+          <span class="platform">ARM</span>
+          <h3>Windows ARM64</h3>
+          <p>适合 ARM 芯片 Windows 设备，普通电脑不需要选这个。</p>
+          <div class="download-meta">
+            <span>推荐：ARM64 MSI</span>
+            <span>文件：CC-Switch-v3.16.5-Windows-arm64.msi</span>
+          </div>
+          <a class="btn primary" href="https://github.com/farion1231/cc-switch/releases/download/v3.16.5/CC-Switch-v3.16.5-Windows-arm64.msi">下载 Windows ARM64</a>
+        </article>
+
+        <article class="download-card">
+          <span class="platform">M</span>
+          <h3>Mac M 系列</h3>
+          <p>适合 M1、M2、M3、M4 等 Apple Silicon Mac。</p>
+          <div class="download-meta">
+            <span>推荐：macOS DMG</span>
+            <span>文件：CC-Switch-v3.16.5-macOS.dmg</span>
+          </div>
+          <a class="btn primary" href="https://github.com/farion1231/cc-switch/releases/download/v3.16.5/CC-Switch-v3.16.5-macOS.dmg">下载 Mac M 系列</a>
+        </article>
+
+        <article class="download-card">
+          <span class="platform">Intel</span>
+          <h3>Mac Intel</h3>
+          <p>适合 Intel 芯片 Mac，官方当前使用同一个通用 DMG。</p>
+          <div class="download-meta">
+            <span>推荐：macOS DMG</span>
+            <span>文件：CC-Switch-v3.16.5-macOS.dmg</span>
+          </div>
+          <a class="btn primary" href="https://github.com/farion1231/cc-switch/releases/download/v3.16.5/CC-Switch-v3.16.5-macOS.dmg">下载 Mac Intel</a>
+        </article>
+      </div>
+    </section>
+
     <section id="steps">
       <div class="section-heading">
         <div>
           <p class="kicker">图文步骤</p>
           <h2 class="section-title">从令牌管理导入 CC Switch</h2>
-          <p class="section-lead">下面的流程适合已经安装 CC Switch 的用户。整个过程中不需要把 API Key 粘贴到网页，只需要在 LinaryAI 控制台里点击对应按钮。</p>
+          <p class="section-lead">安装 CC Switch 后，按下面流程从 LinaryAI 令牌管理一键导入配置。整个过程中不需要把 API Key 粘贴到网页，只需要在 LinaryAI 控制台里点击对应按钮。</p>
         </div>
         <a class="btn primary" href="https://api.linaryai.top/keys">打开 LinaryAI 令牌管理</a>
       </div>
