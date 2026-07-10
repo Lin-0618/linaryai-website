@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>自动化任务 - LinaryAI Codex</title>
+  <meta name="description" content="了解 Codex 自动化任务适合哪些场景，以及如何把 PR 检查、周报、发布清单和资料整理交给 Codex 定时处理。">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://api.linaryai.top/codex/automation.html">
+  <link rel="shortcut icon" href="/codex/favicon.ico?v=20260710">
+  <link rel="stylesheet" href="assets/linary-codex-site.css">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="index.html"><img src="assets/linary-logo.png" alt="LinaryAI"><span>Linary AI</span></a>
+    <div class="nav-links">
+      <a href="index.html">首页</a><a href="download.html">下载配置</a>
+      <a href="codex-install.html">Codex 安装</a>
+      <a href="ccswitch.html">CC Switch</a><a href="automation.html" aria-current="page">自动化</a><a href="skills.html">Skills</a><a href="plugins.html">插件包</a><a href="tutorials.html">教程</a><a href="faq.html">FAQ</a><a href="https://api.linaryai.top/keys">获取 API Key</a>
+    </div>
+  </nav>
+  <main>
+    <header class="page-hero">
+      <div class="page-hero-inner">
+        <span class="eyebrow">Automation</span>
+        <h1>让 Codex 定时处理重复工作</h1>
+        <p class="page-copy">自动化适合后台定时任务、长任务追踪、PR/CI 盯盘和资料整理。LinaryAI 的页面要把“能自动化什么”和“怎样写得安全”讲清楚。</p>
+        <div class="actions"><a class="btn primary" href="skills.html">配合 Skills 使用</a><a class="btn" href="faq.html">看安全边界</a></div>
+      </div>
+    </header>
+
+    <section class="dark-section">
+      <div class="section-heading">
+        <div>
+          <p class="kicker">场景地图</p>
+          <h2 class="section-title">自动化不是炫技，是把重复工作收起来</h2>
+          <p class="section-lead">先从低风险、可检查、有明确停止条件的任务开始。</p>
+        </div>
+      </div>
+      <div class="services">
+        <article class="service-card"><span class="service-icon">CI</span><h3>PR 与 CI 盯盘</h3><p>定时检查失败构建、Review 评论和测试结果，把需要人工确认的点集中汇报。</p></article>
+        <article class="service-card"><span class="service-icon">W</span><h3>周报与项目摘要</h3><p>从文档、Issue、提交记录或连接器上下文里整理进展、风险和下一步。</p></article>
+        <article class="service-card"><span class="service-icon">R</span><h3>发布前检查</h3><p>按清单检查版本说明、配置项、迁移脚本、截图和文档遗漏。</p></article>
+        <article class="service-card"><span class="service-icon">D</span><h3>资料定期清理</h3><p>把零散文件、表格和聊天记录整理成可审阅草稿，避免信息散在各处。</p></article>
+        <article class="service-card"><span class="service-icon">S</span><h3>安全和权限提醒</h3><p>提醒 API Key、配置文件、日志和外部连接器的敏感信息处理边界。</p></article>
+        <article class="service-card"><span class="service-icon">T</span><h3>任务续跑</h3><p>让一个线程按固定节奏继续检查长任务，而不是靠人记得回来追。</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <p class="kicker">写法建议</p>
+          <h2 class="section-title">一个自动化提示词应该说清五件事</h2>
+        </div>
+      </div>
+      <div class="workflow">
+        <article class="workflow-step"><span class="step-number">1</span><strong>任务</strong><p>明确每次醒来要检查什么，不要泛泛写“帮我看看”。</p></article>
+        <article class="workflow-step"><span class="step-number">2</span><strong>频率</strong><p>选择固定间隔、每日、每周或自定义 cron。</p></article>
+        <article class="workflow-step"><span class="step-number">3</span><strong>范围</strong><p>指定项目、仓库、工作树、数据来源和允许读取的内容。</p></article>
+        <article class="workflow-step"><span class="step-number">4</span><strong>停止条件</strong><p>说明什么时候归档、什么时候提醒人、什么时候继续等。</p></article>
+      </div>
+      <p class="notice">高风险自动化不要直接放开：涉及删除、支付、客户数据、生产配置和外部写操作时，应该保留人工确认。</p>
+    </section>
+  </main>
+  <footer><span>© LinaryAI</span><span>自动化适合可检查、可回滚、边界清楚的任务。</span></footer>
+</body>
+</html>
+

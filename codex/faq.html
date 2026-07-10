@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ 排障 - LinaryAI Codex</title>
+  <meta name="description" content="LinaryAI Codex 常见问题：安装拦截、API Key、安全、自动化、Skills、插件、日志和中文配置。">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://api.linaryai.top/codex/faq.html">
+  <link rel="shortcut icon" href="/codex/favicon.ico?v=20260710">
+  <link rel="stylesheet" href="assets/linary-codex-site.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "LinaryAI Codex 是 OpenAI 官方产品吗？", "acceptedAnswer": {"@type": "Answer", "text": "不是。LinaryAI Codex 是面向中文用户的配置、教程和便利工具入口。Codex 产品本身以 OpenAI 官方说明为准。"}},
+        {"@type": "Question", "name": "安装助手会上传 API Key 吗？", "acceptedAnswer": {"@type": "Answer", "text": "安装页不收集 API Key。安装器会把 Key 写入本机 Codex 配置，正式使用前仍建议用户自行核对日志和配置文件。"}},
+        {"@type": "Question", "name": "自动化和 Skills 是做什么的？", "acceptedAnswer": {"@type": "Answer", "text": "自动化适合定时检查和重复任务，Skills 用来把稳定工作流包装成可复用说明、资源和脚本。"}}
+      ]
+    }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="index.html"><img src="assets/linary-logo.png" alt="LinaryAI"><span>Linary AI</span></a>
+    <div class="nav-links">
+      <a href="index.html">首页</a><a href="download.html">下载配置</a>
+      <a href="codex-install.html">Codex 安装</a>
+      <a href="ccswitch.html">CC Switch</a><a href="automation.html">自动化</a><a href="skills.html">Skills</a><a href="plugins.html">插件包</a><a href="tutorials.html">教程</a><a href="faq.html" aria-current="page">FAQ</a><a href="https://api.linaryai.top/keys">获取 API Key</a>
+    </div>
+  </nav>
+  <main>
+    <header class="page-hero">
+      <div class="page-hero-inner">
+        <span class="eyebrow">FAQ</span>
+        <h1>安装、配置和自动化常见问题</h1>
+        <p class="page-copy">把用户最常问的问题集中在这里，既方便客服，也方便搜索引擎理解页面。</p>
+      </div>
+    </header>
+    <section>
+      <div class="faq">
+        <div class="faq-item"><h3>LinaryAI Codex 是 OpenAI 官方产品吗？</h3><p>不是。LinaryAI Codex 是面向中文用户的配置、教程和便利工具入口。Codex 产品本身、功能可用性和账号权限以 OpenAI 官方页面与用户账号显示为准。</p></div>
+        <div class="faq-item"><h3>安装助手会上传 API Key 吗？</h3><p>安装页不收集 API Key。安装器会把 Key 写入本机 Codex 配置，不会把 Key 放进公开日志、命令行参数或网页表单。</p></div>
+        <div class="faq-item"><h3>Windows 提示“不明发布者”怎么办？</h3><p>当前安装包未做商业代码签名时，Windows 可能提示 SmartScreen。选择“更多信息”后点击“仍要运行”。正式分发建议购买代码签名证书。</p></div>
+        <div class="faq-item"><h3>macOS 提示来自不明开发者怎么办？</h3><p>先运行包内放行脚本，或在系统设置的隐私与安全性里选择“仍要打开”。正式分发建议 Apple Developer 签名和公证。</p></div>
+        <div class="faq-item"><h3>Codex 没有中文怎么办？</h3><p>安装器会写入 <code>localeOverride = "zh-CN"</code> 并设置默认中文回答。配置完成后请完全退出 Codex 再重新打开一次。</p></div>
+        <div class="faq-item"><h3>自动化适合哪些任务？</h3><p>适合重复、可检查、有明确停止条件的任务，例如 PR/CI 盯盘、发布清单检查、周报草稿、资料整理和定时提醒。</p></div>
+        <div class="faq-item"><h3>什么时候应该写 Skill？</h3><p>当一个流程会重复出现、需要固定步骤、参考资料或脚本时，适合沉淀成 Skill。一次性任务用普通提示词即可。</p></div>
+        <div class="faq-item"><h3>插件、Skills、MCP 有什么区别？</h3><p>Skills 更像可复用工作流说明；MCP 负责连接外部工具和上下文；插件可以把 Skills、应用连接和 MCP 服务打包成可安装能力。</p></div>
+        <div class="faq-item"><h3>日志在哪里？</h3><p>Windows 日志优先在 <code>%LOCALAPPDATA%\LinaryAI\CodexInstaller\logs\LinaryAI-Codex-install.log</code>。macOS 日志在桌面 <code>LinaryAI-Codex-setup.log</code>。发给技术支持前请确认不要包含 API Key。</p></div>
+      </div>
+    </section>
+    <section class="security">
+      <img class="security-mark" src="assets/linary-app-icon.png" alt="LinaryAI">
+      <div class="security-copy">
+        <h2>密钥只在本机处理</h2>
+        <p>使用自动化、插件和外部连接器时，也建议按最小权限原则逐项开启。涉及删除、支付、客户数据、生产配置和外部写操作时，应该保留人工确认。</p>
+      </div>
+    </section>
+  </main>
+  <footer><span>© LinaryAI</span><span>非 OpenAI 官方站点。LinaryAI 提供中文配置、教程和工作流便利工具。</span></footer>
+</body>
+</html>
+

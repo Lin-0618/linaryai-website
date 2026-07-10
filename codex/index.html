@@ -3,645 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LinaryAI Codex 安装助手</title>
-  <link rel="shortcut icon" href="/codex/favicon.ico?v=20260630">
-  <link rel="icon" href="/codex/assets/favicon.ico?v=20260630" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/codex/assets/favicon-32.png?v=20260630">
-  <link rel="icon" type="image/png" sizes="64x64" href="/codex/assets/favicon.png?v=20260630">
-  <link rel="apple-touch-icon" sizes="180x180" href="/codex/assets/apple-touch-icon.png?v=20260630">
-  <meta property="og:image" content="https://linaryai.top/codex/assets/favicon-192.png?v=20260630">
-  <meta name="twitter:image" content="https://linaryai.top/codex/assets/favicon-192.png?v=20260630">
-  <style>
-    :root {
-      --green: #14b86f;
-      --green-dark: #087947;
-      --blue: #315fd6;
-      --amber: #c98b1c;
-      --ink: #101316;
-      --ink-soft: #293139;
-      --muted: #59626a;
-      --line: #dbe4df;
-      --paper: #f5f7f2;
-      --paper-deep: #edf3ec;
-      --white: #ffffff;
-      --dark: #0f1512;
-      --shadow: 0 22px 70px rgba(16, 19, 22, 0.11);
-      --serif: "Times New Roman", "Songti SC", "Noto Serif SC", serif;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei UI", "PingFang SC", sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        linear-gradient(180deg, #fbfcf8 0%, var(--paper) 46%, #ffffff 100%);
-      font-family: var(--sans);
-      letter-spacing: 0;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 56px;
-      background: rgba(250, 252, 248, 0.9);
-      border-bottom: 1px solid rgba(16, 19, 22, 0.08);
-      backdrop-filter: blur(20px);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 220px;
-    }
-
-    .brand img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
-
-    .brand span {
-      font-family: var(--serif);
-      font-size: 23px;
-      color: var(--ink);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      padding: 8px 10px;
-      border-radius: 8px;
-    }
-
-    .nav-links a:hover {
-      color: var(--ink);
-      background: rgba(16, 19, 22, 0.05);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 690px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(420px, 500px);
-      gap: 56px;
-      align-items: center;
-      padding: 86px 72px 56px;
-      background:
-        linear-gradient(135deg, #fbfdf8 0%, #eef6ee 54%, #fffaf0 100%);
-      border-bottom: 1px solid rgba(16, 19, 22, 0.08);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(16, 19, 22, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 19, 22, 0.045) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity: 0.38;
-      pointer-events: none;
-    }
-
-    .hero > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      color: var(--green-dark);
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 20px;
-      background: rgba(20, 184, 111, 0.1);
-      border: 1px solid rgba(20, 184, 111, 0.25);
-      border-radius: 8px;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: 66px;
-      line-height: 1.04;
-      font-weight: 500;
-      letter-spacing: 0;
-      max-width: 720px;
-    }
-
-    .hero-copy {
-      max-width: 660px;
-      margin: 24px 0 0;
-      color: var(--muted);
-      font-size: 20px;
-      line-height: 1.7;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      max-width: 720px;
-      margin-top: 26px;
-    }
-
-    .hero-stats span {
-      min-height: 54px;
-      display: flex;
-      align-items: center;
-      padding: 12px 14px;
-      color: var(--ink-soft);
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px solid rgba(16, 19, 22, 0.08);
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(16, 19, 22, 0.05);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 20px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      font-weight: 700;
-      font-size: 15px;
-      background: var(--white);
-      color: var(--ink);
-      box-shadow: 0 8px 22px rgba(16, 19, 22, 0.05);
-      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-
-    .btn.primary {
-      color: #fff;
-      background: var(--green);
-      border-color: var(--green);
-      box-shadow: 0 14px 30px rgba(20, 184, 111, 0.26);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(16, 19, 22, 0.2);
-      box-shadow: 0 16px 34px rgba(16, 19, 22, 0.09);
-    }
-
-    .btn.primary:hover {
-      background: #0da563;
-      border-color: #0da563;
-      box-shadow: 0 18px 38px rgba(20, 184, 111, 0.32);
-    }
-
-    .btn:focus-visible,
-    .nav-links a:focus-visible {
-      outline: 3px solid rgba(49, 95, 214, 0.28);
-      outline-offset: 3px;
-    }
-
-    .product-panel {
-      position: relative;
-      background: #fff;
-      border: 1px solid rgba(16, 19, 22, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .panel-head {
-      padding: 28px 28px 22px;
-      background:
-        linear-gradient(180deg, #ffffff 0%, #f3f8f2 100%);
-      border-bottom: 1px solid rgba(16, 19, 22, 0.08);
-    }
-
-    .panel-logo {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    .panel-status {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 14px 16px;
-      background: #0f1512;
-      color: #fff;
-      border-radius: 8px;
-    }
-
-    .panel-status strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 3px;
-    }
-
-    .panel-status span {
-      display: block;
-      color: rgba(255,255,255,0.7);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .status-pill {
-      flex: 0 0 auto;
-      padding: 6px 10px;
-      color: #11432d;
-      background: #c8f2dc;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .checklist {
-      display: grid;
-      gap: 14px;
-      margin: 0;
-      padding: 24px 28px 28px;
-      list-style: none;
-    }
-
-    .checklist li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--ink-soft);
-      font-size: 15px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--green);
-      flex: 0 0 auto;
-      box-shadow: 0 0 0 6px rgba(20, 184, 111, 0.12);
-    }
-
-    section {
-      padding: 72px;
-      border-bottom: 1px solid rgba(16, 19, 22, 0.08);
-      scroll-margin-top: 84px;
-    }
-
-    .section-title {
-      margin: 0 0 28px;
-      font-family: var(--serif);
-      font-size: 42px;
-      font-weight: 500;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 30px;
-    }
-
-    .section-heading .section-title {
-      margin-bottom: 10px;
-    }
-
-    .section-lead {
-      max-width: 860px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .kicker {
-      margin: 0 0 8px;
-      color: var(--green-dark);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .step {
-      min-height: 220px;
-      padding: 26px;
-      background: #fff;
-    }
-
-    .step strong {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 14px;
-    }
-
-    .step p, .faq p, .download-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .downloads {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .download-card {
-      position: relative;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 28px;
-      box-shadow: 0 18px 48px rgba(16, 19, 22, 0.07);
-      overflow: hidden;
-    }
-
-    .download-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto;
-      height: 4px;
-      background: linear-gradient(90deg, var(--green), var(--blue), var(--amber));
-    }
-
-    .download-card h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-    }
-
-    .download-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 16px 0 0;
-    }
-
-    .download-meta span {
-      padding: 6px 9px;
-      color: var(--ink-soft);
-      background: var(--paper-deep);
-      border: 1px solid rgba(16, 19, 22, 0.06);
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .download-card .btn { margin-top: 22px; }
-
-    .download-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .download-links .btn { margin-top: 0; }
-
-    .tutorial-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .tutorial-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 14px 34px rgba(16, 19, 22, 0.06);
-    }
-
-    .tutorial-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1120 / 720;
-      object-fit: cover;
-      background: #eef2ef;
-      border-bottom: 1px solid rgba(8, 11, 13, 0.08);
-    }
-
-    .tutorial-copy {
-      padding: 20px 22px 24px;
-      border-top: 4px solid rgba(20, 184, 111, 0.18);
-    }
-
-    .tutorial-copy h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-    }
-
-    .tutorial-copy p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .tutorial-note {
-      margin: 28px 0 0;
-      padding: 18px 20px;
-      color: #24513b;
-      background: #eaf8f0;
-      border: 1px solid #c8ecd6;
-      border-radius: 8px;
-      line-height: 1.7;
-    }
-
-    .image-disclaimer {
-      margin: 0 0 22px;
-      padding: 14px 16px;
-      color: #5f4215;
-      background: #fff7df;
-      border: 1px solid #ecd28f;
-      border-radius: 8px;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    code {
-      padding: 2px 6px;
-      border-radius: 6px;
-      background: rgba(8, 11, 13, 0.06);
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-      font-size: 0.92em;
-    }
-
-    .security {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      background:
-        linear-gradient(135deg, #101512 0%, #17231d 58%, #0f1512 100%);
-      color: #fff;
-    }
-
-    .security-mark {
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 10px;
-    }
-
-    .security-copy {
-      flex: 1 1 auto;
-    }
-
-    .security h2 {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: 36px;
-      font-weight: 500;
-    }
-
-    .security p {
-      max-width: 640px;
-      margin: 10px 0 0;
-      color: rgba(255,255,255,0.74);
-      line-height: 1.8;
-    }
-
-    .faq {
-      display: grid;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .faq-item {
-      background: #fff;
-      padding: 24px 26px;
-    }
-
-    .faq-item h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 30px 72px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .btn { transition: none; }
-      .btn:hover { transform: none; }
-    }
-
-    @media (max-width: 900px) {
-      .nav, .hero, section, footer { padding-left: 24px; padding-right: 24px; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; gap: 34px; min-height: auto; padding-top: 54px; }
-      h1 { font-size: 44px; }
-      .hero-copy { font-size: 17px; }
-      .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .steps, .downloads, .tutorial-grid { grid-template-columns: 1fr; }
-      .section-heading { align-items: flex-start; flex-direction: column; }
-      .security { align-items: flex-start; flex-direction: column; }
-      footer { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 560px) {
-      .nav { padding-top: 12px; padding-bottom: 12px; }
-      .brand { min-width: 0; gap: 10px; }
-      .brand span { font-size: 20px; }
-      .hero { padding-top: 40px; }
-      .eyebrow { font-size: 13px; }
-      h1 { font-size: 38px; line-height: 1.08; }
-      .section-title { font-size: 34px; }
-      .actions, .download-links { width: 100%; }
-      .btn { width: 100%; }
-      .hero-stats { grid-template-columns: 1fr; }
-      .panel-head, .checklist, .download-card { padding-left: 20px; padding-right: 20px; }
-      .panel-status { align-items: flex-start; flex-direction: column; }
-      .security-mark { width: 60px; height: 60px; }
-    }
-  </style>
+  <title>LinaryAI Codex 便利中心 - Codex 下载、自动化、Skills 和插件入口</title>
+  <meta name="description" content="LinaryAI Codex 便利中心提供 Codex 下载配置、LinaryAI API Key 接入、中文体验、自动化任务、Skills 工作流、插件包和常见排障教程。">
+  <meta name="keywords" content="LinaryAI Codex,Codex下载,Codex自动化,Codex Skills,Codex插件,Codex配置,LinaryAI API Key,Codex中文教程">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#14b86f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LinaryAI Codex 便利中心">
+  <meta property="og:description" content="从安装配置到自动化、Skills 和插件包，让 Codex 更快进入真实工作流。">
+  <meta property="og:image" content="https://api.linaryai.top/codex/assets/favicon-192.png?v=20260710">
+  <link rel="canonical" href="https://api.linaryai.top/codex/">
+  <link rel="shortcut icon" href="/codex/favicon.ico?v=20260710">
+  <link rel="icon" href="/codex/assets/favicon.ico?v=20260710" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/codex/assets/favicon-32.png?v=20260710">
+  <link rel="apple-touch-icon" sizes="180x180" href="/codex/assets/apple-touch-icon.png?v=20260710">
+  <link rel="stylesheet" href="assets/linary-codex-site.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://api.linaryai.top/codex/#website",
+          "url": "https://api.linaryai.top/codex/",
+          "name": "LinaryAI Codex 便利中心",
+          "inLanguage": "zh-CN",
+          "description": "Codex 下载、配置、自动化、Skills、插件和中文教程入口。"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://api.linaryai.top/codex/#webpage",
+          "url": "https://api.linaryai.top/codex/",
+          "name": "LinaryAI Codex 便利中心",
+          "isPartOf": { "@id": "https://api.linaryai.top/codex/#website" },
+          "inLanguage": "zh-CN",
+          "dateModified": "2026-07-06"
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
   <nav class="nav">
-    <a class="brand" href="#">
+    <a class="brand" href="index.html" aria-label="Linary AI 首页">
       <img src="assets/linary-logo.png" alt="LinaryAI">
       <span>Linary AI</span>
     </a>
-    <div class="nav-links">
-      <a href="#download">下载</a>
-      <a href="#windows">Windows 教程</a>
-      <a href="#macos">macOS 教程</a>
-      <a href="codex-install.html">Codex 官方安装</a>
+    <div class="nav-links" aria-label="主要导航">
+      <a href="index.html" aria-current="page">首页</a>
+      <a href="download.html">下载配置</a>
+      <a href="codex-install.html">Codex 安装</a>
       <a href="ccswitch.html">CC Switch</a>
+      <a href="automation.html">自动化</a>
+      <a href="skills.html">Skills</a>
+      <a href="plugins.html">插件包</a>
+      <a href="tutorials.html">教程</a>
+      <a href="faq.html">FAQ</a>
       <a href="https://api.linaryai.top/keys">获取 API Key</a>
-      <a href="#faq">常见问题</a>
     </div>
   </nav>
 
   <main>
     <section class="hero">
       <div>
-        <div class="eyebrow">LinaryAI Codex Setup</div>
-        <h1>LinaryAI Codex 安装助手</h1>
-        <p class="hero-copy">打开安装器后会先检测本机 Codex。检测通过后输入一次 API Key，即可把 Codex 配置为使用 LinaryAI、安装插件包，并设置简体中文体验。</p>
-        <div class="hero-stats" aria-label="安装能力">
-          <span>Windows EXE 一键配置</span>
-          <span>macOS Setup App</span>
-          <span>附带 Codex 插件包</span>
-          <span>自动设置简体中文</span>
+        <div class="eyebrow">LinaryAI Codex Hub</div>
+        <h1>把 Codex 变成能马上用的工作台</h1>
+        <p class="hero-copy">这不是一个长长的说明页，而是 LinaryAI 给中文用户准备的 Codex 便利入口：下载配置、自动化任务、Skills 工作流、插件包和排障教程分成独立页面，按问题直接进入。</p>
+        <div class="hero-stats" aria-label="站点能力概览">
+          <span>Codex App / CLI / IDE 快速开始</span>
+          <span>Windows 与 macOS 一键配置</span>
+          <span>自动化任务与工作流模板</span>
+          <span>Skills、插件、MCP 便利入口</span>
         </div>
         <div class="actions">
-          <a class="btn primary" href="downloads/LinaryAI-Codex-Setup-Branded-20260627.exe">下载 Windows 版</a>
-          <a class="btn" href="downloads/LinaryAI-Codex-macOS-Setup-Branded-20260627.zip">下载 macOS 版</a>
-          <a class="btn" href="codex-install.html">Codex 官方安装</a>
-          <a class="btn" href="ccswitch.html">配置 CC Switch</a>
-          <a class="btn" href="https://api.linaryai.top/keys">获取 API Key</a>
+          <a class="btn primary" href="download.html">开始下载配置</a>
+          <a class="btn" href="automation.html">看自动化场景</a>
+          <a class="btn dark" href="https://api.linaryai.top/keys">获取 API Key</a>
         </div>
+        <form class="search-card" data-search-form>
+          <div class="search-row">
+            <input data-search-input type="search" placeholder="搜索：API Key、Windows、自动化、Skills、插件、日志">
+            <button class="btn primary" type="submit">搜索入口</button>
+          </div>
+          <div class="chips" aria-label="快捷入口">
+            <a class="chip" href="download.html">下载安装</a>
+            <a class="chip" href="automation.html">自动化</a>
+            <a class="chip" href="skills.html">Skills</a>
+            <a class="chip" href="plugins.html">插件包</a>
+            <a class="chip" href="faq.html">排障 FAQ</a>
+          </div>
+        </form>
       </div>
       <aside class="product-panel">
         <div class="panel-head">
@@ -649,196 +100,107 @@
           <div class="panel-status">
             <div>
               <strong>LinaryAI Codex Setup</strong>
-              <span>检测 Codex、写入配置、安装插件、设置中文</span>
+              <span>配置 API、安装插件、设置中文、打开 Codex</span>
             </div>
-            <span class="status-pill">中文就绪</span>
+            <span class="status-pill">工作台就绪</span>
           </div>
         </div>
         <ul class="checklist">
-          <li><span class="dot"></span>检测本机 Codex</li>
+          <li><span class="dot"></span>检测本机 Codex 与系统环境</li>
           <li><span class="dot"></span>写入 LinaryAI API 配置</li>
           <li><span class="dot"></span>安装 LinaryAI Codex 插件包</li>
-          <li><span class="dot"></span>设置 Codex 简体中文</li>
-          <li><span class="dot"></span>配置完成后打开 Codex</li>
+          <li><span class="dot"></span>设置简体中文体验</li>
+          <li><span class="dot"></span>引导自动化与 Skills 使用</li>
         </ul>
       </aside>
     </section>
 
-    <section id="download">
-      <h2 class="section-title">选择你的系统</h2>
-      <div class="downloads">
-        <div class="download-card">
-          <h3>Windows 一键安装包</h3>
-          <p>双击 EXE 安装器后会先检测 Codex。未安装 Codex 时，安装器会提示下载官方 Codex，并提供“重新检测”按钮。</p>
-          <div class="download-meta">
-            <span>EXE 安装包</span>
-            <span>约 14 MB</span>
-            <span>中文向导</span>
-          </div>
-          <div class="download-links">
-            <a class="btn primary" href="downloads/LinaryAI-Codex-Setup-Branded-20260627.exe">下载 Windows 版</a>
-            <a class="btn" href="#windows">查看图文教程</a>
-          </div>
-        </div>
-        <div class="download-card">
-          <h3>macOS Setup App</h3>
-          <p>解压后双击 LinaryAI Codex Setup.app，输入 API Key 后写入本机配置。未签名版本首次打开可能需要系统放行。</p>
-          <div class="download-meta">
-            <span>ZIP 压缩包</span>
-            <span>约 16 MB</span>
-            <span>中文提示</span>
-          </div>
-          <div class="download-links">
-            <a class="btn primary" href="downloads/LinaryAI-Codex-macOS-Setup-Branded-20260627.zip">下载 macOS 版</a>
-            <a class="btn" href="#macos">查看图文教程</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="windows">
+    <section>
       <div class="section-heading">
         <div>
-          <p class="kicker">Windows 图文安装教程</p>
-          <h2 class="section-title">从下载安装到打开 Codex</h2>
-          <p class="section-lead">Windows 版直接提供 EXE 安装包。用户只需要下载、双击、输入 LinaryAI API Key，安装器会自动处理 Codex 配置、插件包和简体中文设置。</p>
+          <p class="kicker">分页面导航</p>
+          <h2 class="section-title">按任务进入，每页只讲一件事</h2>
+          <p class="section-lead">参考站的强项是入口聚合。我们的版本保留入口密度，但把内容拆成多页，避免用户在一个超长页面里迷路。</p>
         </div>
-        <a class="btn primary" href="downloads/LinaryAI-Codex-Setup-Branded-20260627.exe">下载 Windows EXE</a>
       </div>
-
-      <p class="image-disclaimer">以下图片为按当前 LinaryAI 安装器流程制作的界面示意图，用于说明点击顺序；正式发布前建议替换为 Windows Sandbox 或测试机里的真实截图。</p>
-      <div class="tutorial-grid">
-        <article class="tutorial-card">
-          <img src="assets/tutorial-windows-01-download.png" alt="Windows 第一步：下载 Windows 安装包">
-          <div class="tutorial-copy">
-            <h3>1. 下载 Windows 安装包</h3>
-            <p>打开安装页后点击“下载 Windows 版”，浏览器会下载一个 EXE 文件。</p>
-          </div>
+      <div class="entry-grid">
+        <article class="entry-card">
+          <span class="entry-tag">Setup</span>
+          <h3>下载配置</h3>
+          <p>Windows、macOS、API Key、中文体验、安装视频和图文步骤。</p>
+          <a href="download.html">进入页面</a>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-windows-02-open-exe.png" alt="Windows 第二步：双击打开 EXE">
-          <div class="tutorial-copy">
-            <h3>2. 双击打开 EXE</h3>
-            <p>下载完成后双击安装包。如果出现 SmartScreen 提示，点击“更多信息”后选择“仍要运行”。</p>
-          </div>
+        <article class="entry-card">
+          <span class="entry-tag">Automation</span>
+          <h3>自动化任务</h3>
+          <p>PR 盯盘、周报、发布检查、资料整理和任务续跑模板。</p>
+          <a href="automation.html">进入页面</a>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-windows-03-download-codex.png" alt="Windows 第三步：按需下载 Codex">
-          <div class="tutorial-copy">
-            <h3>3. 检测 Codex 并准备 Key</h3>
-            <p>安装向导会显示 Codex 检测结果。检测不到时，点击“下载 Codex”，安装完成后再点“重新检测”。</p>
-          </div>
+        <article class="entry-card">
+          <span class="entry-tag">Skills</span>
+          <h3>Skills 工作流</h3>
+          <p>把重复任务包装成可复用说明、资源和脚本。</p>
+          <a href="skills.html">进入页面</a>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-windows-04-input-key.png" alt="Windows 第四步：输入 LinaryAI API Key">
-          <div class="tutorial-copy">
-            <h3>4. 输入 LinaryAI API Key</h3>
-            <p>在安装向导的 API Key 页面粘贴完整 Key，然后点击“下一步”。不需要手动打开 Terminal。</p>
-          </div>
+        <article class="entry-card">
+          <span class="entry-tag">Plugins</span>
+          <h3>插件包</h3>
+          <p>理解插件、Skills、Apps、MCP、Hooks 和连接器的关系。</p>
+          <a href="plugins.html">进入页面</a>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-windows-05-configure.png" alt="Windows 第五步：等待自动配置">
-          <div class="tutorial-copy">
-            <h3>5. 等待自动配置</h3>
-            <p>安装器会写入 LinaryAI API 配置、安装插件包，并设置 Codex 简体中文。</p>
-          </div>
+        <article class="entry-card">
+          <span class="entry-tag">Docs</span>
+          <h3>教程中心</h3>
+          <p>把高频问题拆成独立教程，后续适合继续做 SEO 页面。</p>
+          <a href="tutorials.html">进入页面</a>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-windows-06-finish.png" alt="Windows 第六步：打开 Codex">
-          <div class="tutorial-copy">
-            <h3>6. 完成安装</h3>
-            <p>点击“完成”退出向导。桌面会生成“打开 LinaryAI Codex”入口，之后 Codex 会使用 LinaryAI 配置和中文体验。</p>
-          </div>
+        <article class="entry-card">
+          <span class="entry-tag">Support</span>
+          <h3>FAQ 排障</h3>
+          <p>安装拦截、日志、中文、config.toml、自动化安全边界。</p>
+          <a href="faq.html">进入页面</a>
         </article>
       </div>
-      <p class="tutorial-note">如果 Windows 提示“不明发布者”，这是未购买商业代码签名证书时的常见系统提示。用户可点击“更多信息”，再选择“仍要运行”。</p>
     </section>
 
-    <section id="macos">
+    <section>
       <div class="section-heading">
         <div>
-          <p class="kicker">macOS 图文安装教程</p>
-          <h2 class="section-title">解压后用 Setup App 配置</h2>
-          <p class="section-lead">macOS 版是压缩包形式，用户下载后解压，双击 LinaryAI Codex Setup.app。若电脑还没有 Codex，安装器会先提示打开官方 Codex 下载页；装好后再次运行 Setup App 输入 API Key。</p>
+          <p class="kicker">快速开始</p>
+          <h2 class="section-title">四步把 Codex 跑起来</h2>
         </div>
-        <a class="btn primary" href="downloads/LinaryAI-Codex-macOS-Setup-Branded-20260627.zip">下载 macOS ZIP</a>
       </div>
-
-      <p class="image-disclaimer">以下图片为按当前 macOS Setup App 脚本流程制作的界面示意图，用于说明点击顺序；正式发布前建议替换为 macOS 测试机里的真实截图。</p>
-      <div class="tutorial-grid">
-        <article class="tutorial-card">
-          <img src="assets/tutorial-macos-01-download.png" alt="macOS 第一步：下载 macOS 安装包">
-          <div class="tutorial-copy">
-            <h3>1. 下载 macOS 安装包</h3>
-            <p>打开安装页后点击“下载 macOS 版”，下载 LinaryAI Codex 的 ZIP 压缩包。</p>
-          </div>
+      <div class="workflow">
+        <article class="workflow-step">
+          <span class="step-number">1</span>
+          <strong>安装 Codex</strong>
+          <p>选择桌面端、CLI 或 IDE 工作流。新手优先用可视化安装助手。</p>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-macos-02-open-app.png" alt="macOS 第二步：解压并打开 Setup App">
-          <div class="tutorial-copy">
-            <h3>2. 解压并打开 Setup App</h3>
-            <p>正常情况双击 LinaryAI Codex Setup.app。若系统拦截，再运行包内的放行脚本。</p>
-          </div>
+        <article class="workflow-step">
+          <span class="step-number">2</span>
+          <strong>连接 LinaryAI</strong>
+          <p>输入一次 API Key，写入本机配置，减少手动改 config.toml 的错误。</p>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-macos-03-download-codex.png" alt="macOS 第三步：按需下载 Codex">
-          <div class="tutorial-copy">
-            <h3>3. 如果没有 Codex，先安装 Codex</h3>
-            <p>没有检测到 Codex 时，点击“打开 Codex 下载页”。安装完成后再回到 Setup App。</p>
-          </div>
+        <article class="workflow-step">
+          <span class="step-number">3</span>
+          <strong>启用插件和 Skills</strong>
+          <p>按工作内容选择浏览器、GitHub、文档、表格、设计、报告等能力。</p>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-macos-04-input-key.png" alt="macOS 第四步：输入 LinaryAI API Key">
-          <div class="tutorial-copy">
-            <h3>4. 输入 LinaryAI API Key</h3>
-            <p>在系统弹窗里粘贴 API Key，输入内容会明文显示，确认无误后点击“开始配置”。</p>
-          </div>
+        <article class="workflow-step">
+          <span class="step-number">4</span>
+          <strong>创建自动化</strong>
+          <p>把重复检查、提醒、汇总、审查流程交给 Codex 定时运行和回报。</p>
         </article>
-        <article class="tutorial-card">
-          <img src="assets/tutorial-macos-05-finish.png" alt="macOS 第五步：完成并打开 Codex">
-          <div class="tutorial-copy">
-            <h3>5. 完成并打开 Codex</h3>
-            <p>看到配置完成提示后，Codex 会使用 LinaryAI API、插件包和简体中文设置。</p>
-          </div>
-        </article>
-      </div>
-      <p class="tutorial-note">如果 macOS 提示“来自不明开发者”，先运行压缩包内的“0-如果提示无法打开-先点我.command”，或在系统设置的隐私与安全性里选择“仍要打开”。</p>
-    </section>
-
-    <section class="security">
-      <img class="security-mark" src="assets/linary-app-icon.png" alt="LinaryAI">
-      <div class="security-copy">
-        <h2>密钥只在本机处理</h2>
-        <p>安装页不收集 API Key。安装器会把 Key 写入本机 Codex 配置，不会把 Key 放进公开日志、命令行参数或网页表单。</p>
-      </div>
-    </section>
-
-    <section id="faq">
-      <h2 class="section-title">常见问题</h2>
-      <div class="faq">
-        <div class="faq-item">
-          <h3>Windows 提示“不明发布者”怎么办？</h3>
-          <p>当前安装包未做商业代码签名时，Windows 可能提示 SmartScreen。选择“更多信息”后点击“仍要运行”。正式分发建议购买代码签名证书。</p>
-        </div>
-        <div class="faq-item">
-          <h3>macOS 提示来自不明开发者怎么办？</h3>
-          <p>先运行包内的“0-如果提示无法打开-先点我.command”，或在系统设置的隐私与安全性里选择“仍要打开”。正式分发建议 Apple Developer 签名和公证。</p>
-        </div>
-        <div class="faq-item">
-          <h3>Codex 没有中文怎么办？</h3>
-          <p>安装器会写入 <code>localeOverride = "zh-CN"</code> 并设置默认中文回答。配置完成后请完全退出 Codex 再重新打开一次。</p>
-        </div>
-        <div class="faq-item">
-          <h3>日志在哪里？</h3>
-          <p>Windows 日志在桌面 <code>LinaryAI-Codex-install.log</code>。macOS 日志在桌面 <code>LinaryAI-Codex-setup.log</code>。发给技术支持前请确认不要包含 API Key。</p>
-        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <span>© LinaryAI</span>
-    <span>Codex 安装助手不会在网页中收集 API Key</span>
+    <span>非 OpenAI 官方站点。LinaryAI 提供中文配置、教程和工作流便利工具。</span>
   </footer>
+
+  <script src="assets/linary-codex-site.js"></script>
 </body>
 </html>
+
